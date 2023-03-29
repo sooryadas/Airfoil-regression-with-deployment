@@ -5,10 +5,13 @@ import numpy as np
 
 app =Flask(__name__)
 model=pickle.load(open('model.pkl','rb'))
-@app.route('/predict_api',methods=['POST'])
+
+@app.route('/')
 def home():
     #return 'Hello World'
     return render_template('home.html')
+
+@app.route('/predict_api',methods=['POST'])
 
 def predict_api():
     data=request.json['data']
